@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Builder | GeminiPrompt.id</title>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .form-group { margin-bottom: 1.2rem; text-align: left; }
+        .form-label { display: block; color: var(--text-muted); margin-bottom: 0.5rem; font-size: 0.9rem; font-weight: 600; }
+        .form-input, .form-select { width: 100%; background: rgba(0,0,0,0.3); border: 1px solid var(--border-color); color: white; padding: 0.8rem; border-radius: 0.5rem; font-family: inherit; }
+        .form-select option { background: #0b0d14; }
+    </style>
+</head>
+<body>
+    <div class="particles"></div>
+
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo" style="color:white; text-decoration:none; font-weight:800; display:flex; gap:0.5rem; align-items:center;">
+                <i class="ph-fill ph-infinity text-purple-400" style="font-size:1.5rem;"></i> GeminiPrompt
+            </a>
+            <div class="nav-links">
+                <a href="image-to-prompt.html" class="nav-item"><i class="ph-bold ph-image"></i> Image to Prompt</a>
+                <a href="enhancer.html" class="nav-item"><i class="ph-bold ph-magic-wand"></i> Enhancer</a>
+                <a href="advanced.html" class="nav-item"><i class="ph-bold ph-sliders"></i> Advanced</a>
+                <a href="cleanup.html" class="nav-item"><i class="ph-bold ph-eraser"></i> Cleanup</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <header class="hero-section" style="padding-bottom: 2rem;">
+            <h1 class="neon-title title-orange">Advanced Builder</h1>
+            <p class="subtitle">Manually construct precise prompts with granular control over every aspect.</p>
+        </header>
+
+        <section class="grid-2">
+            <div class="glass-panel">
+                <h3 style="color:white; margin-bottom: 1.5rem;">Parameters</h3>
+                
+                <div class="form-group">
+                    <label class="form-label">Subject</label>
+                    <input type="text" id="adv-subject" class="form-input" placeholder="e.g. A cyberpunk samurai">
+                </div>
+
+                <div class="grid-2" style="margin-top: 0; gap: 1rem;">
+                    <div class="form-group">
+                        <label class="form-label">Art Style</label>
+                        <select id="adv-style" class="form-select">
+                            <option value="">None</option>
+                            <option value="Photorealistic, 8k, raw photo">Photorealistic</option>
+                            <option value="Anime style, Studio Ghibli">Anime</option>
+                            <option value="Cyberpunk, neon lights">Cyberpunk</option>
+                            <option value="Oil painting, textured">Oil Painting</option>
+                            <option value="3D render, Unreal Engine 5">3D Render</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Lighting</label>
+                        <select id="adv-lighting" class="form-select">
+                            <option value="">None</option>
+                            <option value="Cinematic lighting">Cinematic</option>
+                            <option value="Natural sunlight">Natural Sunlight</option>
+                            <option value="Volumetric lighting">Volumetric</option>
+                            <option value="Studio lighting">Studio Softbox</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="grid-2" style="margin-top: 0; gap: 1rem;">
+                    <div class="form-group">
+                        <label class="form-label">Camera / View</label>
+                        <select id="adv-camera" class="form-select">
+                            <option value="">None</option>
+                            <option value="Wide angle shot">Wide Angle</option>
+                            <option value="Close up portrait">Close Up</option>
+                            <option value="Drone view, aerial shot">Aerial View</option>
+                            <option value="Macro lens, detailed">Macro</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Mood / Color</label>
+                        <select id="adv-mood" class="form-select">
+                            <option value="">None</option>
+                            <option value="Dark, gloomy, moody">Dark & Gloomy</option>
+                            <option value="Vibrant, pastel colors">Vibrant & Pastel</option>
+                            <option value="Golden hour, warm">Golden Hour</option>
+                            <option value="Cold, blue tones">Cold & Blue</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button onclick="buildPrompt()" class="builder-btn" style="background: linear-gradient(to right, #f97316, #fbbf24); margin-top: 1rem;">
+                    <i class="ph-bold ph-wrench"></i> Build Prompt
+                </button>
+            </div>
+
+            <div class="glass-panel" style="display: flex; flex-direction: column;">
+                <h3 style="color:white; margin-bottom: 1.5rem;">Final Prompt</h3>
+                <textarea id="adv-result" readonly placeholder="Build your prompt to see result..." style="flex:1; width: 100%; background: rgba(0,0,0,0.3); border: 1px solid var(--border-color); border-radius: 0.8rem; padding: 1rem; color: #fbbf24; resize: none; font-family: inherit; font-size: 1.1rem; line-height: 1.6;"></textarea>
+                <button onclick="copyText('adv-result')" class="builder-btn" style="background: rgba(255,255,255,0.1); margin-top: 1rem; border: 1px solid var(--border-color);">
+                    <i class="ph-bold ph-copy"></i> Copy to Clipboard
+                </button>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div style="display:flex; justify-content:center; align-items:center; gap:0.5rem; margin-bottom:1rem; color:white; font-weight:700; font-size:1.2rem;">
+                <i class="ph-fill ph-infinity text-purple-400"></i> GEMINIPROMPT.id
+            </div>
+            <p style="color:var(--text-muted); font-size:0.9rem;">Your all-in-one toolkit for crafting perfect prompts for any AI image generator.</p>
+            <div class="footer-links">
+                <a href="#">Terms of Service</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Contact</a>
+            </div>
+            <p style="color:#475569; font-size:0.8rem; margin-top:2rem;">&copy; 2026 GEMINIPROMPT.id. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script>
+        // Simple internal logic for the builder since main.js doesn't cover it
+        function buildPrompt() {
+            const subject = document.getElementById('adv-subject').value;
+            const style = document.getElementById('adv-style').value;
+            const lighting = document.getElementById('adv-lighting').value;
+            const camera = document.getElementById('adv-camera').value;
+            const mood = document.getElementById('adv-mood').value;
+
+            let promptParts = [];
+            if(subject) promptParts.push(subject);
+            if(style) promptParts.push(style);
+            if(lighting) promptParts.push(lighting);
+            if(camera) promptParts.push(camera);
+            if(mood) promptParts.push(mood);
+
+            const finalPrompt = promptParts.join(", ");
+            document.getElementById('adv-result').value = finalPrompt || "Please enter at least a subject.";
+        }
+    </script>
+</body>
+</html>

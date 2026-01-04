@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prompt Enhancer | GeminiPrompt.id</title>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <div class="particles"></div>
+
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo" style="color:white; text-decoration:none; font-weight:800; display:flex; gap:0.5rem; align-items:center;">
+                <i class="ph-fill ph-infinity text-purple-400" style="font-size:1.5rem;"></i> GeminiPrompt
+            </a>
+            <div class="nav-links">
+                <a href="image-to-prompt.html" class="nav-item"><i class="ph-bold ph-image"></i> Image to Prompt</a>
+                <a href="enhancer.html" class="nav-item"><i class="ph-bold ph-magic-wand"></i> Enhancer</a>
+                <a href="advanced.html" class="nav-item"><i class="ph-bold ph-sliders"></i> Advanced</a>
+                <a href="cleanup.html" class="nav-item"><i class="ph-bold ph-eraser"></i> Cleanup</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <header class="hero-section" style="padding-bottom: 2rem;">
+            <h1 class="neon-title title-green">Prompt Enhancer</h1>
+            <p class="subtitle">Turn simple ideas into detailed, artistic, "God Tier" prompts instantly.</p>
+        </header>
+
+        <section style="max-width: 800px; margin: 0 auto; width: 100%;">
+            <div class="glass-panel">
+                <label style="color: white; font-weight: 600; margin-bottom: 0.5rem; display: block;">Your Simple Idea</label>
+                <textarea id="input-prompt" placeholder="e.g. A cat sitting on a futuristic roof" style="width: 100%; height: 100px; background: rgba(0,0,0,0.3); border: 1px solid var(--border-color); border-radius: 0.8rem; padding: 1rem; color: white; resize: vertical; font-family: inherit; margin-bottom: 1.5rem;"></textarea>
+
+                <button id="btn-enhance" onclick="enhancePrompt()" class="builder-btn" style="background: linear-gradient(to right, #10b981, #34d399); margin-bottom: 2rem;">
+                    <i class="ph-fill ph-sparkle"></i> Enhance with Magic
+                </button>
+
+                <div style="border-top: 1px solid var(--border-color); padding-top: 1.5rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <h3 style="margin: 0; color: white;">Enhanced Result</h3>
+                        <button onclick="copyText('output-prompt')" style="background: transparent; border: 1px solid var(--border-color); color: var(--text-muted); padding: 0.4rem 0.8rem; border-radius: 0.5rem; cursor: pointer;">
+                            <i class="ph-bold ph-copy"></i> Copy
+                        </button>
+                    </div>
+                    <textarea id="output-prompt" readonly placeholder="Your enhanced prompt will appear here..." style="width: 100%; height: 200px; background: rgba(0,0,0,0.5); border: 1px solid var(--border-color); border-radius: 0.8rem; padding: 1rem; color: #34d399; resize: none; font-family: inherit;"></textarea>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div style="display:flex; justify-content:center; align-items:center; gap:0.5rem; margin-bottom:1rem; color:white; font-weight:700; font-size:1.2rem;">
+                <i class="ph-fill ph-infinity text-purple-400"></i> GEMINIPROMPT.id
+            </div>
+            <p style="color:var(--text-muted); font-size:0.9rem;">Your all-in-one toolkit for crafting perfect prompts for any AI image generator.</p>
+            <div class="footer-links">
+                <a href="#">Terms of Service</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Contact</a>
+            </div>
+            <p style="color:#475569; font-size:0.8rem; margin-top:2rem;">&copy; 2026 GEMINIPROMPT.id. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
